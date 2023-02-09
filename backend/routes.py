@@ -80,7 +80,7 @@ def create_song():
     song = db.songs.find_one({"id": song_in["id"]})
     if song:
         return {
-            "Message": f"picture with id {song_in['id']} already present"
+            "Message": f"song with id {song_in['id']} already present"
         }, 302
 
     insert_id: InsertOneResult = db.songs.insert_one(song_in)
@@ -117,7 +117,7 @@ def update_song(id):
 
 
 @app.route("/song/<int:id>", methods=["DELETE"])
-def delete_picture(id):
+def delete_song(id):
 
     result = db.songs.delete_one({"id": id})
     if result.deleted_count == 0:
