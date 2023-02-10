@@ -1,0 +1,14 @@
+services:
+
+  mongo:
+    image: mongo
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+
+  songsapp:
+    image: us.icr.io/sn-labs-lavanyas/songsapp:latest
+    ports:
+      - 3000:3000
+    environment:
+      ME_CONFIG_MONGODB_URL: mongodb://root:example@mongo:27017
