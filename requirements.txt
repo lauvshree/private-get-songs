@@ -13,3 +13,5 @@ pytest==7.0.1
 # Code Coverage
 coverage==6.2
 codecov==2.1.12
+
+pymongo==4.1.1
