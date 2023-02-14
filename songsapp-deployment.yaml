@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: songsapp
+  labels:
+    app: songsapp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: songsapp
+  template:
+    metadata:
+      labels:
+        app: songsapp
+    spec:
+      containers:
+      - image: us.icr.io/sn-labs-lavanyas/songsapp
+        imagePullPolicy: Always
+        name: songsapp
+        ports:
+        - containerPort: 3000
+          name: http
+        env:
+        - name: ME_CONFIG_MONGODB_URL
+          value: mongodb://root:example@mongo:27017/
